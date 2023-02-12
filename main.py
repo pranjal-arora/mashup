@@ -27,8 +27,8 @@ outputName = form.text_input(label='Enter output file name')
 email = form.text_input(label='Enter email')
 submit_button = form.form_submit_button(label='Submit')
 
-PASSWORD = st.secrets["PASSWORD"]
-
+# PASSWORD = st.secrets["PASSWORD"]
+passw="aeiou"
 
 numberOfVideosInt = int(float(numberOfVideos))
 singer = singerName.replace(' ', '+')
@@ -169,7 +169,7 @@ def zipCombinedAudioClip():
 def sendEmail(email, result_file) : 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "pranji.arora7@gmail.com"  # Enter your address
+    sender_email = "parora_be20@thapar.edu"  # Enter your address
     receiver_email = email  # Enter receiver address
 
         # Create a multipart message and set headers
@@ -204,7 +204,7 @@ def sendEmail(email, result_file) :
         # Log in to server using secure context and send email
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, PASSWORD)
+        server.login(sender_email, passw)
         server.sendmail(sender_email, receiver_email, text)
     
 if submit_button:
