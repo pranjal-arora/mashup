@@ -56,7 +56,7 @@ def retrieveValidVideos(singer):
     listVideos = list(set(listVideos)) #set has unique elemnents
     # print(len(listVideos))
 
-    count = 2
+    count = 1
     videos = [] #empty videos list
     for video in listVideos:
         if count > numberOfVideosInt:
@@ -105,7 +105,7 @@ def videoToAudioConversion():
     filenames = []
     for filename in os.listdir(videodirectorypath):
             filenames.append(filename)
-            if filename.endswith(".txt"):
+            if filename=="John Legend - All She Wanna Do (Audio).3gpp":
                 os.remove(videodirectorypath + filename)
     print("LIST OF FILES CURRENTLY PRESENT IN THE DIRECTORY ARE:-")
     print(filenames)
@@ -123,7 +123,7 @@ def videoToAudioConversion():
         video.audio.write_audiofile(audiodirectorypath + str(count) + ".mp3")#converting the video to audio file, saving it with .mp3 extension
         video.close()
         # os.remove(videodirectorypath+filename) #remove the video after use
-        if filename.endswith(".txt"):
+        if filename=="100.mp3":
             os.remove(audiodirectorypath + filename)
         count += 1
 
