@@ -100,7 +100,7 @@ def downloadVideo(video):
 def videoToAudioConversion():
    
     #get file names in directory
-    videodirectorypath = os.getcwd()+"\\videos\\"
+    videodirectorypath = os.getcwd()+"videos/"
     # print(videodirectorypath)
 
     filenames = []
@@ -109,7 +109,7 @@ def videoToAudioConversion():
     print("LIST OF FILES CURRENTLY PRESENT IN THE DIRECTORY ARE:-")
     print(filenames)
 
-    audiodirectorypath = os.getcwd()+"\\audios\\" #define path
+    audiodirectorypath = os.getcwd()+"audios/" #define path
     if not os.path.exists(audiodirectorypath): 
         os.makedirs(audiodirectorypath)
 
@@ -128,7 +128,7 @@ def videoToAudioConversion():
 
 #FUNCTION TO COMBINE THE AUDIOS TOGETHER AUDIOS 
 def combineTogetherAllAudioFiles():
-    audiodirectorypath = os.getcwd()+"\\audios\\"
+    audiodirectorypath = os.getcwd()+"audios/"
     audioFile = audiodirectorypath + outputName
     
     if os.path.exists(audioFile):
@@ -155,7 +155,7 @@ def combineTogetherAllAudioFiles():
 
 #FUCNTION TO ZIP THE COMBINED AUDIO CLIP
 def zipCombinedAudioClip():
-    audiodirectorypath = os.getcwd()+"\\audios\\"
+    audiodirectorypath = os.getcwd()+"audios/"
     audioFile =audiodirectorypath + outputName
 
     zipAudioFile = audioFile + ".zip" #adding the extension
