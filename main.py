@@ -22,12 +22,12 @@ from email.mime.text import MIMEText
 st.header("MASHUP- by Pranjal Arora, 102003402, 3CO-16")
 form = st.form(key='my_form')
 
-singerName = form.text_input(label='Enter singer name')
-numberOfVideos =  form.text_input(label='Enter number of videos')
-durationOfFirstCut = form.text_input(label='Enter cut duration in seconds')
-outputName = form.text_input(label='Enter output file name')
-email = form.text_input(label='Enter email')
-submit_button = form.form_submit_button(label='Submit')
+singerName = form.text_input(label='SINGER NAME:-')
+numberOfVideos =  form.text_input(label='NUMBER OF VIDEOS OF THE SINGER:-')
+durationOfFirstCut = form.text_input(label='DURATION:-')
+outputName = form.text_input(label='OUTPUT FILENAME:-')
+email = form.text_input(label='YOUR EMAIL ID:-')
+submit_button = form.form_submit_button(label='SUBMIT')
 
 PASSWORD = st.secrets["PASSWORD"]
 # passw="aeiou"
