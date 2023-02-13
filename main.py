@@ -18,6 +18,8 @@ from email import encoders # provides encoders used by MIMEAudio and MIMEImage c
 from email.mime.base import MIMEBase #This is the base class for all the MIME-specific subclasses of Message
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+st.header("MASHUP- by Pranjal Arora, 102003402, 3CO-16")
 form = st.form(key='my_form')
 
 singerName = form.text_input(label='Enter singer name')
@@ -27,8 +29,8 @@ outputName = form.text_input(label='Enter output file name')
 email = form.text_input(label='Enter email')
 submit_button = form.form_submit_button(label='Submit')
 
-# PASSWORD = st.secrets["PASSWORD"]
-passw="aeiou"
+PASSWORD = st.secrets["PASSWORD"]
+# passw="aeiou"
 
 numberOfVideosInt = int(float(numberOfVideos))
 singer = singerName.replace(' ', '+')
@@ -172,24 +174,20 @@ def sendEmail(email, result_file) :
     sender_email = "parora_be20@thapar.edu"  # Enter your address
     receiver_email = email  # Enter receiver address
 
-        # Create a multipart message and set headers
+        
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
-    message["Subject"] = "Mashup assignment- zip audio file attachment "
+    message["Subject"] = "Mashup assignment - By Pranjal Arora, 102003402, zip audio file attachment "
+    message.attach(MIMEText("Please find the attached zip audio file. Submission made by Pranjal Arora, 102003402, 3CO-16", "plain"))
 
-        # Add body to email
-    message.attach(MIMEText("Please find the attached zip audio file.", "plain"))
-
-        # Open PDF file in bynary
+    
     zip_file = "audios/" + outputName + ".zip"
     
     part = MIMEBase('application', "octet-stream")
     part.set_payload( open(zip_file,"rb").read() )
-        # Encode file in ASCII characters to send by email    
     encoders.encode_base64(part)
     
-        # Add header with pdf name
     part.add_header(
         "Content-Disposition",
         f"attachment; filename={outputName+'.zip'}",
@@ -197,21 +195,19 @@ def sendEmail(email, result_file) :
     
         
 
-        # Add attachment to message and convert message to string
     message.attach(part)
     text = message.as_string()
 
-        # Log in to server using secure context and send email
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, passw)
+        server.login(sender_email, PASSWORD)
         server.sendmail(sender_email, receiver_email, text)
     
 if submit_button:
     if singerName == '' or numberOfVideos == '' or durationOfFirstCut == '' or outputName == '' or email == '':
-        st.warning('Please enter all the fields')
+        st.warning('ENTER ALL FIELDS PLEASE')
     else:
-        st.success('Please wait while we process your request')
+        st.success('WE PROCESSING YOUR REQUEST..')
         if outputName.count('.') == 0:
             outputName += '.mp3'
         outputName.split('.')[-1] = 'mp3'
@@ -225,6 +221,6 @@ if submit_button:
         combineTogetherAllAudioFiles()
         zipCombinedAudioClip()
         sendEmail(email, outputName)
-        st.success('Your file is ready. Please check your email')
+        st.success('WE HAVE SUCCESSFULLY MAILED YOU THE AUDIO ZIP FILE, PLEASE CHECK YOU INBOX :)')
         
 
