@@ -75,7 +75,7 @@ def retrieveValidVideos(singer):
 
 #FUNCTION TO DOWNLOAD VIDEO FROM THE VALID VIDEO URL LIST
 def downloadVideo(video):
-    videodirectorypath = '/videos/' 
+    videodirectorypath = 'videos/' 
 
     #if path doesn't exist then make the path
     if not os.path.exists(videodirectorypath): 
