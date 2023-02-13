@@ -62,10 +62,9 @@ def retrieveValidVideos(singer):
         if count > numberOfVideosInt:
             break
         instance = YouTube(video) #Instance of the Youtube video object- contains information like (title, length, thumbnail-url, description, views, rating, age_restricted, video_id) 
-
-        if instance.length/60 < 7.00:  #.length() gives length of video in seconds
-            videos.append(video)
-            count += 1
+        # if instance.length/60 < 7.00:  #.length() gives length of video in seconds
+        videos.append(video)
+        count += 1
     return videos  #return the valid videos url list
 
 
