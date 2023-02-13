@@ -122,9 +122,9 @@ def videoToAudioConversion():
         video = VideoFileClip(videodirectorypath+filename).subclip(0, int(durationOfFirstCut)) #clipping the video to the cut duration
         video.audio.write_audiofile(audiodirectorypath + str(count) + ".mp3")#converting the video to audio file, saving it with .mp3 extension
         video.close()
-        os.remove(videodirectorypath+filename) #remove the video after use
+        # os.remove(videodirectorypath+filename) #remove the video after use
         if filename.endswith(".txt"):
-            os.remove(videodirectorypath + filename)
+            os.remove(audiodirectorypath + filename)
         count += 1
 
 
