@@ -105,13 +105,17 @@ def videoToAudioConversion():
     filenames = []
     for filename in os.listdir(videodirectorypath):
             filenames.append(filename)
+            if filename.endswith(".txt"):
+                os.remove(videodirectorypath + filename)
     print("LIST OF FILES CURRENTLY PRESENT IN THE DIRECTORY ARE:-")
     print(filenames)
+
 
     audiodirectorypath = os.getcwd()+"/audios/" #define path
     if not os.path.exists(audiodirectorypath): 
         os.makedirs(audiodirectorypath)
 
+    
     count=1
     for filename in filenames:
         print("\nCURRENTLY CONVERTING THIS FILE:- ", filename)
@@ -119,6 +123,8 @@ def videoToAudioConversion():
         video.audio.write_audiofile(audiodirectorypath + str(count) + ".mp3")#converting the video to audio file, saving it with .mp3 extension
         video.close()
         os.remove(videodirectorypath+filename) #remove the video after use
+        if filename.endswith(".txt"):
+            os.remove(videodirectorypath + filename)
         count += 1
 
 
