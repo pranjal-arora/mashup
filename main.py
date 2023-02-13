@@ -56,7 +56,7 @@ def retrieveValidVideos(singer):
     listVideos = list(set(listVideos)) #set has unique elemnents
     # print(len(listVideos))
 
-    count = 1
+    count = 2
     videos = [] #empty videos list
     for video in listVideos:
         if count > numberOfVideosInt:
