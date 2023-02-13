@@ -1,5 +1,5 @@
 Flask==2.2.2
 imageio==2.4.1
-moviepy==1.0.3
+moviepy==0.2.3.5
 pytube==12.1.2
 streamlit==1.18.1
