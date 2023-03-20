@@ -1,23 +1,6 @@
-import urllib.request  #The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) - authentication, redirections, cookies and more.
-import re #provides reguslar expression support
-from pytube import YouTube #downloading YouTube Videos. Create the object of the YouTube module by passing the link as the parameter. Then, get the appropriate extension and resolution of the video. After that, download the file using the download function which has one parameter which is the location where to download the file.
-
-import os #OS module in Python helps interact with underlying os. provides functions for creating and removing a directory (folder), fetching its contents, changing and identifying the current directory, etc. 
-import imageio #Imageio is a Python library that provides an easy interface to read and write a wide range of image data, including animated images, video, volumetric data, and scientific formats. 
-imageio.plugins.ffmpeg.download() #Read/Write video frames using FFMPEG(external software to process multimedia files) thorugh pipes. The ffmpeg format provides reading and writing for a wide range of movie formats such as .avi, .mpeg, .mp4, etc. as well as the ability to read streams from webcams and USB cameras. It is based on moviepy.
-#FFMPEG:- FFMPEG stands for Fast Forward Moving Picture Experts Group. It is a free and open source software project that offers many tools for video and audio processing. It's designed to run on a command line interface, and has many different libraries and programs to manipulate and handle video files
-from moviepy.editor import *  #MoviePy (full documentation) is a Python library for video editing: cutting, concatenations, title insertions, video compositing (a.k.a. non-linear editing), video processing, and creation of custom effects. 
-import sys #provides various functions and variables that are used to manipulate different parts of the Python runtime environment.
-import streamlit as st #Streamlit is an open source app framework in Python language. It helps us create web apps for data science and machine learning in a short time. With Streamlit, no callbacks are needed since widgets are treated as variables. Data caching simplifies and speeds up computation pipelines. Streamlit watches for changes on updates of the linked Git repository and the application will be deployed automatically in the shared link.
-import zipfile #manipulates zip file,  It supports decryption of encrypted files in ZIP archives,
-import email, smtplib, ssl
-#the 'email' package to read, write, and send simple email messages, as well as more complex MIME(Multipurpose Internet Mail Extension(extension of the original Simple Mail Transport Protocol (SMTP) email protocol.)) messages.
-#smtplib - for the actual sending function. SMTP client session object that can be used to send mail to any internet machine with an SMTP listener daemon
-#ssl- secure socket layer encryption and peer authentication for network sockets both on client-side and server-side. It uses cryptography and message digests to secure data and detect alteration attempts in the network.
-from email import encoders # provides encoders used by MIMEAudio and MIMEImage class to provide default encodings. These extract the payload, encode the message and reset the paylaod to this newly encoded value
-from email.mime.base import MIMEBase #This is the base class for all the MIME-specific subclasses of Message
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import os 
+import sys 
+import streamlit as st 
 
 st.header("MASHUP- by Pranjal Arora, 102003402, 3CO-16")
 form = st.form(key='my_form')
@@ -34,6 +17,13 @@ PASSWORD = st.secrets["PASSWORD"]
 
 numberOfVideosInt = int(float(numberOfVideos))
 singer = singerName.replace(' ', '+')
+
+import urllib.request  
+
+import re #provides regular expression support
+from pytube import YouTube #for downloading YouTube Videos. 
+#Create the object of the YouTube module by passing the link as the parameter. 
+
 
 #FUNCTION TO RETRIEVE VALID VIDEOS' URLS
 def retrieveValidVideos(singer):
@@ -92,7 +82,10 @@ def downloadVideo(video):
 
 
 
-
+import imageio 
+imageio.plugins.ffmpeg.download() 
+#FFMPEG:- FFMPEG stands for Fast Forward Moving Picture Experts Group. 
+from moviepy.editor import * #video editing: cutting, concatenations
 
 
 #FUNCTION TO CONVERT THE DOWNLOADED VIDEOS TO THEIR CORRESPONDING AUDIO FILES, ONE BY ONE
@@ -155,8 +148,7 @@ def combineTogetherAllAudioFiles():
 
 
 
-
-
+import zipfile 
 
 #FUCNTION TO ZIP THE COMBINED AUDIO CLIP
 def zipCombinedAudioClip():
@@ -170,6 +162,12 @@ def zipCombinedAudioClip():
 
 
 
+import email, smtplib, ssl
+#the 'email' package to read, write, and send simple email messages
+from email import encoders 
+from email.mime.base import MIMEBase 
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
     
